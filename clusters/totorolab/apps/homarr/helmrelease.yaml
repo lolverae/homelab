@@ -1,0 +1,60 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+  name: homarr
+  namespace: homarr
+spec:
+  chart:
+    spec:
+      chart: homarr
+      sourceRef:
+        kind: HelmRepository
+        name: homarr
+        namespace: flux-system
+      version: '*'
+  interval: 1h
+  install:
+    createNamespace: true
+  values:
+    image:
+      repository: ghcr.io/homarr-labs/homarr
+      pullPolicy: IfNotPresent
+      tag: v1.8.0
+    env:
+      TZ: America/CST
+    imagePullSecrets:
+      - name: regcred
+    persistence:
+      homarrDatabase:
+        enabled: true
+        storageClassName: k8s-cephfs
+        accessMode: ReadWriteOnce
+        size: 512Mi
+        mountPath: /app/database
+      homarrImages:
+        enabled: true
+        storageClassName: k8s-cephfs
+        accessMode: ReadWriteOnce
+        size: 512Mi
+        mountPath: /app/public/icons
+    livenessProbe:
+      httpGet:
+        path: /
+        port: 7575
+    readinessProbe:
+      httpGet:
+        path: /
+        port: 7575
+    service:
+      # -- Enable service
+      enabled: true
+      # -- Service type
+      type: ClusterIP
+      ports:
+        app:
+          # -- Service port
+          port: 7575
+          # -- Service target port
+          targetPort: http
+          # -- Service protocol
+          protocol: TCP
