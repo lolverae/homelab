@@ -1,8 +1,6 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-  - jellyfin-helm-repository.yaml
   - homarr-helm-repository.yaml
-  - k8s-at-home-helm-repository.yaml
   - traefik-helm-repository.yaml
   - metallb-helm-repository.yaml
