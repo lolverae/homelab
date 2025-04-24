@@ -1,0 +1,28 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: nextcloud
+  namespace: nextcloud
+spec:
+  interval: 1h
+  chart:
+    spec:
+      chart: nextcloud
+      version: 4.5.12
+      sourceRef:
+        kind: HelmRepository
+        name: nextcloud
+        namespace: flux-system
+  install:
+    createNamespace: true
+  values:
+    nextcloud:
+      host: nextcloud.totorolab.local
+    ingress:
+      enabled: true
+      className: traefik
+    persistence:
+      enabled: true
+      existingClaim: ""
+      storageClass: k8s-cephfs
+      size: 5Gi
