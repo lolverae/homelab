@@ -4,3 +4,4 @@ resources:
   - homarr-helm-repository.yaml
   - traefik-helm-repository.yaml
   - metallb-helm-repository.yaml
+  - certmanager-helm-repository.yaml
