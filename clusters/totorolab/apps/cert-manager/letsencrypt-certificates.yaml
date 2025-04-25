@@ -1,6 +1,32 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
+  name: homarr-cert
+  namespace: monitoring
+spec:
+  secretName: homarr-cert
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
+  dnsNames:
+    - homarr.totorolab.local
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: nextcloud-cert
+  namespace: monitoring
+spec:
+  secretName: nextcloud-cert
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
+  dnsNames:
+    - nextcloud.totorolab.local
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
   name: grafana-cert
   namespace: monitoring
 spec:
@@ -10,3 +36,16 @@ spec:
     kind: ClusterIssuer
   dnsNames:
     - grafana.totorolab.local
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: traefik-cert
+  namespace: monitoring
+spec:
+  secretName: traefik-cert
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
+  dnsNames:
+    - traefik.totorolab.local
