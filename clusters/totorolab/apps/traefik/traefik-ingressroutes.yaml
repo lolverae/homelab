@@ -27,3 +27,22 @@ spec:
       services:
         - name: nextcloud
           port: 80
+  tls:
+    secretName: nextcloud-cert
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: grafana
+  namespace: monitoring
+spec:
+  entryPoints:
+    - web
+  routes:
+    - match: Host(`grafana.totorolab.local`)
+      kind: Rule
+      services:
+        - name: grafana
+          port: 80
+  tls:
+    secretName: grafana-cert
