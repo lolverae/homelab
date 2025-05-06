@@ -5,3 +5,5 @@ resources:
   - traefik
   - metallb
   - nextcloud
+  - grafana
+  - prometheus
