@@ -24,6 +24,9 @@ Make sure you have:
   - Ceph storage configured for PVCs
   - MetalLB-ready network (see IP pool below, but setup whatever)
 
+My own lab is made of three mini PC nodes with Wake on LAN enabled for easy
+access.
+
 ---
 
 ## 📁 Repo Layout
