@@ -21,21 +21,21 @@ variable "pm_host2" {
   default = "pve2"
 }
 
-variable "pm_host3" {
-  type    = string
-  default = "pve3"
-}
+# variable "pm_host3" {
+#   type    = string
+#   default = "pve3"
+# }
 
-variable "alma_container_password" {
-  type        = string
-  sensitive   = true
-  description = "Password for the alma container"
-}
-
-variable "alma_os_template" {
-  type        = string
-  description = "LXC template for alma container"
-}
+# variable "alma_container_password" {
+#   type        = string
+#   sensitive   = true
+#   description = "Password for the alma container"
+# }
+#
+# variable "alma_os_template" {
+#   type        = string
+#   description = "LXC template for alma container"
+# }
 
 variable "node_tag" {
   type    = string
@@ -109,6 +109,7 @@ variable "pm_api_token_secret" {
 variable "pm_tls_insecure" {
   type        = bool
   description = "Disable TLS verification while connecting to the Proxmox VE API server."
+  default = true
 }
 variable "pm_host" {
   type        = string

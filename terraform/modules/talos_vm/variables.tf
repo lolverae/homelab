@@ -149,3 +149,9 @@ variable "pm_timeout" {
   default     = 600
 }
 
+variable "module_depends_on" {
+  description = "Optional dependencies for VM"
+  type        = list(any)
+  default     = []
+}
+

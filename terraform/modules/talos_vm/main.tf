@@ -32,7 +32,7 @@ resource "proxmox_vm_qemu" "talos_vm" {
       scsi0 {
         disk {
           size     = "100G"
-          storage  = "pmoxpool01"
+          storage  = "pmxpool"
           iothread = true
         }
       }
@@ -49,7 +49,15 @@ resource "proxmox_vm_qemu" "talos_vm" {
   ipconfig0 = "ip=${cidrhost(var.vm_net_subnet_cidr, var.vm_host_number + count.index)}${local.vm_net_subnet_mask},gw=${local.vm_net_default_gw}"
 
   ciuser = var.vm_user
-  lifecycle {
-    create_before_destroy = true
+  depends_on = [null_resource.wait_before_create]
+}
+resource "null_resource" "wait_before_create" {
+  provisioner "local-exec" {
+    command = "sleep 70"
+  }
+
+  triggers = {
+    create_delay = timestamp()
   }
 }
+
