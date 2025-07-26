@@ -113,7 +113,7 @@ Once your cluster is up:
 - MetalLB IP pool:
   ```yaml
   addresses:
-    - 192.168.100.240 - 192.168.100.250
+    - 192.168.4.240 - 192.168.4.250
   ```
 
 - Traefik dashboard: `http://totorolab.local/dashboard/`
