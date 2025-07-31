@@ -39,3 +39,4 @@ terraform.rc
 .talos_ips
 _out/
 .terraform.lock.hcl
+clusters/totorolab/.hidden
