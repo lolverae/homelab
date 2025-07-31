@@ -4,6 +4,8 @@ metadata:
   name: homarr
   namespace: homarr
 spec:
+  driftDetection:
+    mode: enabled
   chart:
     spec:
       chart: homarr
