@@ -21,8 +21,7 @@ spec:
       storageClassName: k8s-cephfs
       accessModes:
         - ReadWriteOnce
-      size: 2Gi
-    adminPassword: changeme # Replace with sealed secret later
+      size: 512Mi
     ingress:
       enabled: true
       ingressClassName: traefik
