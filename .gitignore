@@ -40,3 +40,4 @@ terraform.rc
 _out/
 .terraform.lock.hcl
 clusters/totorolab/.hidden
+terraform/.terraform.lock.hcl
