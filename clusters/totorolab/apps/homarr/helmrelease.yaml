@@ -29,13 +29,11 @@ spec:
     persistence:
       homarrDatabase:
         enabled: true
-        storageClassName: k8s-cephfs
         accessMode: ReadWriteOnce
         size: 512Mi
         mountPath: /app/database
       homarrImages:
         enabled: true
-        storageClassName: k8s-cephfs
         accessMode: ReadWriteOnce
         size: 512Mi
         mountPath: /app/public/icons

@@ -23,7 +23,6 @@ spec:
         storageSpec:
           volumeClaimTemplate:
             spec:
-              storageClassName: k8s-cephfs
               accessModes:
                 - ReadWriteOnce
               resources:

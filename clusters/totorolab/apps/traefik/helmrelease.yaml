@@ -33,7 +33,6 @@ spec:
     persistence:
       enabled: true
       size: 128Mi
-      storageClass: k8s-cephfs
     dashboard:
       enabled: true
       ingress:

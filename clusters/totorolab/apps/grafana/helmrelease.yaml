@@ -18,7 +18,6 @@ spec:
   values:
     persistence:
       enabled: true
-      storageClassName: k8s-cephfs
       accessModes:
         - ReadWriteOnce
       size: 512Mi

@@ -24,5 +24,4 @@ spec:
     persistence:
       enabled: true
       existingClaim: ""
-      storageClass: k8s-cephfs
       size: 5Gi
