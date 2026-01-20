@@ -6,19 +6,21 @@ resource "proxmox_vm_qemu" "talos_vm" {
   name             = "${var.vm_name_prefix}-${format("%02d", count.index + 1)}"
   agent            = 1
   onboot           = var.vm_onboot
+
   cores            = var.vm_max_vcpus
   vcpus            = var.vm_vcpus
   sockets          = var.vm_sockets
   cpu_type         = var.vm_cpu_type
   memory           = var.vm_memory_mb
+
   scsihw           = "virtio-scsi-single"
   boot             = "order=scsi0;net0;ide0"
-  hotplug          = "disk,network,usb"
-  numa             = true
+  hotplug          = "disk,network"
   automatic_reboot = false
   vm_state         = "stopped"
-  desc             = "This VM is managed by Terraform, cloned from an Talos image"
-  tags             = var.vm_tags
+
+  desc = "Talos OS Kubernetes stateless node, NFS-backed media storage"
+  tags = var.vm_tags
 
   disks {
     ide {
@@ -31,9 +33,11 @@ resource "proxmox_vm_qemu" "talos_vm" {
     scsi {
       scsi0 {
         disk {
-          size     = "100G"
-          storage  = "pmxpool"
+          size     = "200G"
+          storage  = "local-lvm"
           iothread = true
+          discard   = true
+          cache     = "none"
         }
       }
     }
@@ -49,15 +53,15 @@ resource "proxmox_vm_qemu" "talos_vm" {
   ipconfig0 = "ip=${cidrhost(var.vm_net_subnet_cidr, var.vm_host_number + count.index)}${local.vm_net_subnet_mask},gw=${local.vm_net_default_gw}"
 
   ciuser = var.vm_user
-  depends_on = [null_resource.wait_before_create]
+  # depends_on = [null_resource.wait_before_create]
 }
-resource "null_resource" "wait_before_create" {
-  provisioner "local-exec" {
-    command = "sleep 70"
-  }
-
-  triggers = {
-    create_delay = timestamp()
-  }
-}
+# resource "null_resource" "wait_before_create" {
+#   provisioner "local-exec" {
+#     command = "sleep 70"
+#   }
+#
+#   triggers = {
+#     create_delay = timestamp()
+#   }
+# }
 

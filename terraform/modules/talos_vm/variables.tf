@@ -62,7 +62,7 @@ variable "vm_cpu_type" {
 variable "vm_memory_mb" {
   type        = number
   description = "The size of VM memory in MB"
-  default     = 2048
+  default     = 4000
 }
 
 variable "vm_os_disk_size_gb" {
