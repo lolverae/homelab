@@ -94,6 +94,12 @@ This will:
 - Apply control plane and worker configs
 - Get you a ready-to-go Talos K8s cluster ✅
 
+After, update your local kubeconfig with:
+
+```
+talosctl kubeconfig
+```
+
 ---
 
 ## 🌊 Step 3: GitOps with Flux
