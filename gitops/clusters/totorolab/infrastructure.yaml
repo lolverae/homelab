@@ -11,6 +11,6 @@ spec:
   sourceRef:
     kind: ExternalArtifact
     name: infrastructure
-  path: ./controllers
+  path: ./infrastructure/controllers
   prune: true
   wait: true
