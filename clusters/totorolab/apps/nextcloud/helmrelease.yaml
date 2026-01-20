@@ -14,7 +14,10 @@ spec:
         name: nextcloud
         namespace: flux-system
   install:
+    crds: Create
     createNamespace: true
+  upgrade:
+    crds: CreateReplace
   values:
     nextcloud:
       host: nextcloud.totorolab.local

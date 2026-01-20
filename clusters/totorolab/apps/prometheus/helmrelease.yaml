@@ -14,7 +14,10 @@ spec:
         name: prometheus-community
         namespace: flux-system
   install:
+    crds: Create
     createNamespace: true
+  upgrade:
+    crds: CreateReplace
   values:
     grafana:
       enabled: false # We'll install Grafana separately

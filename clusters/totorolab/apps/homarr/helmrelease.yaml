@@ -16,7 +16,10 @@ spec:
       version: '*'
   interval: 1h
   install:
+    crds: Create
     createNamespace: true
+  upgrade:
+    crds: CreateReplace
   values:
     image:
       repository: ghcr.io/homarr-labs/homarr

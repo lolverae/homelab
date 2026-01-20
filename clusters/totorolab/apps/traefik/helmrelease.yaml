@@ -14,7 +14,10 @@ spec:
         name: traefik
         namespace: flux-system
   install:
+    crds: Create
     createNamespace: true
+  upgrade:
+    crds: CreateReplace
   values:
     deployment:
       replicas: 1
