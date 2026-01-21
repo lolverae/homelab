@@ -2,10 +2,11 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
   - cert-manager
-  - certificates
+  # - certificates
   - grafana
   - homarr
   - metallb
   - nextcloud
   - prometheus
-  - traefik
+  - routes
+  # - traefik
