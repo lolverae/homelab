@@ -10,7 +10,7 @@ spec:
   timeout: 5m
   sourceRef:
     kind: ExternalArtifact
-    name: infrastructure
-  path: ./controllers
+    name: platform
+  path: ./gitops/platform/controllers
   prune: true
   wait: true
