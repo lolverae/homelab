@@ -1,8 +1,14 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: metallb
+---
 apiVersion: source.toolkit.fluxcd.io/v1
 kind: HelmRepository
 metadata:
   name: metallb
-  namespace: flux-system
+  namespace: metallb
 spec:
   interval: 1h
   url: https://metallb.github.io/metallb

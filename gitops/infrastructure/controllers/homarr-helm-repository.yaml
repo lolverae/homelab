@@ -1,8 +1,14 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: homarr
+---
 apiVersion: source.toolkit.fluxcd.io/v1
 kind: HelmRepository
 metadata:
   name: homarr
-  namespace: flux-system
+  namespace: homarr
 spec:
   interval: 1h
   url: https://homarr-labs.github.io/charts

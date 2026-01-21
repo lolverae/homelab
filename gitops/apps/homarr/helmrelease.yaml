@@ -12,12 +12,11 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: homarr
-        namespace: flux-system
+        namespace: homarr
       version: '*'
   interval: 1h
   install:
     crds: Create
-    createNamespace: true
   upgrade:
     crds: CreateReplace
   values:

@@ -12,9 +12,8 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: grafana
-        namespace: flux-system
+        namespace: monitoring
   install:
-    createNamespace: true
     crds: Create
   upgrade:
     crds: CreateReplace

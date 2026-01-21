@@ -12,10 +12,9 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: prometheus-community
-        namespace: flux-system
+        namespace: monitoring
   install:
     crds: Create
-    createNamespace: true
   upgrade:
     crds: CreateReplace
   values:

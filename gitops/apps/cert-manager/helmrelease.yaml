@@ -12,10 +12,9 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: cert-manager
-        namespace: flux-system
+        namespace: cert-manager
   install:
     crds: Create
-    createNamespace: true
   upgrade:
     crds: CreateReplace
   values:
