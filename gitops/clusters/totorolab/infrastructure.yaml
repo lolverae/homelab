@@ -11,6 +11,6 @@ spec:
   sourceRef:
     kind: ExternalArtifact
     name: platform
-  path: ./gitops/platform/controllers
+  path: ./gitops/platform/helm-repos
   prune: true
   wait: true
