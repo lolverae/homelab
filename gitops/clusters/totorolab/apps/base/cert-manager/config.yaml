@@ -2,7 +2,7 @@ apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
   name: homarr-cert
-  namespace: monitoring
+  namespace: cert-manager
 spec:
   secretName: homarr-cert
   issuerRef:
@@ -15,7 +15,7 @@ apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
   name: nextcloud-cert
-  namespace: monitoring
+  namespace: cert-manager
 spec:
   secretName: nextcloud-cert
   issuerRef:
@@ -28,7 +28,7 @@ apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
   name: grafana-cert
-  namespace: monitoring
+  namespace: cert-manager
 spec:
   secretName: grafana-cert
   issuerRef:
@@ -41,7 +41,7 @@ apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
   name: traefik-cert
-  namespace: monitoring
+  namespace: cert-manager
 spec:
   secretName: traefik-cert
   issuerRef:
@@ -54,6 +54,7 @@ apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
 metadata:
   name: letsencrypt-prod
+  namespace: cert-manager
 spec:
   acme:
     email: you@example.com
