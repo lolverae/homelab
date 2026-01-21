@@ -1,0 +1,8 @@
+# Talos Cluster IP Configuration
+# Copy this file to .talos_ips and update with your actual IP addresses
+
+# Control plane node IPs (comma-separated, minimum 1, recommended 3 for HA)
+CONTROL_PLANE_IPS=192.168.1.10,192.168.1.11,192.168.1.12
+
+# Worker node IPs (comma-separated)
+WORKER_IPS=192.168.1.20,192.168.1.21
