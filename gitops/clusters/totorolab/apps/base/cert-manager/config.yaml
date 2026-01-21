@@ -4,6 +4,8 @@ metadata:
   name: homarr-cert
   namespace: cert-manager
 spec:
+  dependsOn:
+    - name: cert-manager
   secretName: homarr-cert
   issuerRef:
     name: letsencrypt-prod
@@ -17,6 +19,8 @@ metadata:
   name: nextcloud-cert
   namespace: cert-manager
 spec:
+  dependsOn:
+    - name: cert-manager
   secretName: nextcloud-cert
   issuerRef:
     name: letsencrypt-prod
@@ -30,6 +34,8 @@ metadata:
   name: grafana-cert
   namespace: cert-manager
 spec:
+  dependsOn:
+    - name: cert-manager
   secretName: grafana-cert
   issuerRef:
     name: letsencrypt-prod
@@ -43,6 +49,8 @@ metadata:
   name: traefik-cert
   namespace: cert-manager
 spec:
+  dependsOn:
+    - name: cert-manager
   secretName: traefik-cert
   issuerRef:
     name: letsencrypt-prod
@@ -56,6 +64,8 @@ metadata:
   name: letsencrypt-prod
   namespace: cert-manager
 spec:
+  dependsOn:
+    - name: cert-manager
   acme:
     email: you@example.com
     server: https://acme-v02.api.letsencrypt.org/directory

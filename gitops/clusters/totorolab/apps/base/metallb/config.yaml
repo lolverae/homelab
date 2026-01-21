@@ -4,6 +4,8 @@ metadata:
   name: public-pool
   namespace: metallb
 spec:
+  dependsOn:
+    - name: metallb
   addresses:
     - 192.168.10.240 - 192.168.4.250
 ---
@@ -13,5 +15,7 @@ metadata:
   name: public-l2-advertisement
   namespace: metallb
 spec:
+  dependsOn:
+    - name: metallb
   ipAddressPools:
     - public-pool
