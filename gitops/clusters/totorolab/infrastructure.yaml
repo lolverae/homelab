@@ -36,31 +36,14 @@ spec:
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: cert-manager
-  namespace: flux-system
-spec:
-  interval: 5m
-  path: "./gitops/clusters/totorolab/apps/base/cert-manager/controller"
-  prune: true
-  sourceRef:
-    kind: GitRepository
-    name: flux-system
-  healthChecks:
-    - apiVersion: apps/v1
-      kind: Deployment
-      name: cert-manager
-      namespace: cert-manager
----
-apiVersion: kustomize.toolkit.fluxcd.io/v1
-kind: Kustomization
-metadata:
-  name: certs
+  name: certificates
   namespace: flux-system
 spec:
   dependsOn:
-    - name: cert-manager
+    - name: apps
+    - name: infrastructure
   interval: 5m
-  path: "./gitops/clusters/totorolab/apps/base/cert-manager/certs"
+  path: "./gitops/clusters/totorolab/apps/base/certificates"
   prune: true
   sourceRef:
     kind: GitRepository
