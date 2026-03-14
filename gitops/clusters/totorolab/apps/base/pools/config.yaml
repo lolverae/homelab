@@ -1,13 +1,13 @@
 apiVersion: metallb.io/v1beta1
 kind: IPAddressPool
 metadata:
-  name: public-pool
+  name: lab-pool
   namespace: metallb
 spec:
   dependsOn:
     - name: metallb
   addresses:
-    - 192.168.10.240 - 192.168.4.250
+    - 192.168.10.240 - 192.168.9.250
 ---
 apiVersion: metallb.io/v1beta1
 kind: L2Advertisement
@@ -18,4 +18,4 @@ spec:
   dependsOn:
     - name: metallb
   ipAddressPools:
-    - public-pool
+    - lab-pool
