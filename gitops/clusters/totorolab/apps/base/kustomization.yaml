@@ -8,6 +8,6 @@ resources:
   - metallb
   - nextcloud
   - prometheus
-  # - routes
+  - routes
   - traefik
   - pools

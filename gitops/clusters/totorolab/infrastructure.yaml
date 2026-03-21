@@ -11,7 +11,7 @@ spec:
   sourceRef:
     kind: GitRepository
     name: flux-system
-  path: ./clusters/totorolab/infrastructure
+  path: "./gitops/clusters/totorolab/infrastructure"
   prune: true
   wait: true
 ---
@@ -29,7 +29,7 @@ spec:
   sourceRef:
     kind: GitRepository
     name: flux-system
-  path: ./clusters/totorolab/apps
+  path: ./gitops/clusters/totorolab/apps
   prune: true
   wait: true
 # ---
@@ -48,23 +48,23 @@ spec:
 #   sourceRef:
 #     kind: GitRepository
 #     name: flux-system
-# ---
-# apiVersion: kustomize.toolkit.fluxcd.io/v1
-# kind: Kustomization
-# metadata:
-#   name: routes
-#   namespace: flux-system
-# spec:
-#   dependsOn:
-#     - name: apps
-#     - name: infrastructure
-#     - name: certificates
-#   interval: 5m
-#   path: "./gitops/clusters/totorolab/apps/base/routes"
-#   prune: true
-#   sourceRef:
-#     kind: GitRepository
-#     name: flux-system
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: routes
+  namespace: flux-system
+spec:
+  dependsOn:
+    - name: apps
+    - name: infrastructure
+    - name: certificates
+  interval: 5m
+  path: "./gitops/clusters/totorolab/apps/base/routes"
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
