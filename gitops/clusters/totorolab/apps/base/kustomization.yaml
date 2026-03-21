@@ -10,4 +10,4 @@ resources:
   - prometheus
   # - routes
   - traefik
-  # - pools
+  - pools
