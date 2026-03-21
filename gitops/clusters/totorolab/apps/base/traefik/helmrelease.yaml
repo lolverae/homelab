@@ -38,15 +38,7 @@ spec:
     dashboard:
       enabled: true
       ingress:
-        enabled: true
-        path: /dashboard/
-        pathType: Prefix
-        annotations:
-          kubernetes.io/ingress.class: traefik
-        hosts:
-          - host: totorolab.local
-            paths:
-              - /
+        enabled: false
     service:
       enabled: true
       single: true

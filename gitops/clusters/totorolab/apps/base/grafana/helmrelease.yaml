@@ -25,8 +25,4 @@ spec:
         - ReadWriteOnce
       size: 512Mi
     ingress:
-      enabled: true
-      ingressClassName: traefik
-      hosts:
-        - grafana.totorolab.local
-      path: /
+      enabled: false

@@ -58,7 +58,7 @@ spec:
   dependsOn:
     - name: apps
     - name: infrastructure
-    - name: certificates
+    # - name: certificates
   interval: 5m
   path: "./gitops/clusters/totorolab/apps/base/routes"
   prune: true
