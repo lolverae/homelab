@@ -1,9 +1,23 @@
 apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: totorolab-ca
+  namespace: cert-manager
+spec:
+  isCA: true
+  secretName: totorolab-ca
+  commonName: totorolab-ca
+  issuerRef:
+    name: selfsigned
+    kind: ClusterIssuer
+---
+apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
 metadata:
-  name: selfsigned
+  name: totorolab-ca
 spec:
-  selfSigned: {}
+  ca:
+    secretName: totorolab-ca
 ---
 apiVersion: cert-manager.io/v1
 kind: Certificate
@@ -13,7 +27,7 @@ metadata:
 spec:
   secretName: grafana-cert
   issuerRef:
-    name: selfsigned
+    name: totorolab-ca
     kind: ClusterIssuer
   dnsNames:
     - grafana.totorolab.local
@@ -26,7 +40,7 @@ metadata:
 spec:
   secretName: nextcloud-cert
   issuerRef:
-    name: selfsigned
+    name: totorolab-ca
     kind: ClusterIssuer
   dnsNames:
     - nextcloud.totorolab.local
@@ -39,7 +53,7 @@ metadata:
 spec:
   secretName: traefik-cert
   issuerRef:
-    name: selfsigned
+    name: totorolab-ca
     kind: ClusterIssuer
   dnsNames:
     - totorolab.local
@@ -52,7 +66,7 @@ metadata:
 spec:
   secretName: homarr-cert
   issuerRef:
-    name: selfsigned
+    name: totorolab-ca
     kind: ClusterIssuer
   dnsNames:
     - homarr.totorolab.local
