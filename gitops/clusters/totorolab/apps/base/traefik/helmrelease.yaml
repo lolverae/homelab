@@ -35,9 +35,11 @@ spec:
     persistence:
       enabled: true
       size: 128Mi
-    dashboard:
-      enabled: true
-      ingress:
+    api:
+      dashboard: true
+      insecure: false
+    ingressRoute:
+      dashboard:
         enabled: false
     service:
       enabled: true
@@ -49,9 +51,9 @@ spec:
         service.beta.kubernetes.io/metal-lb: "true"
         metallb.universe.tf/address-pool: lab-pool
       ports:
-        web:
-          port: 80
-          targetPort: 80
-        websecure:
-          port: 443
-          targetPort: 443
+      web:
+        port: 8000
+        exposedPort: 80
+      websecure:
+        port: 8443
+        exposedPort: 443

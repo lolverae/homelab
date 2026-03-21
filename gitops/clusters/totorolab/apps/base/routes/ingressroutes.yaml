@@ -1,4 +1,14 @@
 apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: strip-traefik-prefix
+  namespace: traefik
+spec:
+  stripPrefix:
+    prefixes:
+      - /traefik
+---
+apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
   name: dashboard
@@ -7,8 +17,10 @@ spec:
   entryPoints:
     - web
   routes:
-    - match: Host(`totorolab.local`) && (PathPrefix(`/traefik`) || PathPrefix(`/api`))
+    - match: Host(`totorolab.local`) && PathPrefix(`/traefik`)
       kind: Rule
+      middlewares:
+        - name: strip-traefik-prefix
       services:
         - name: api@internal
           kind: TraefikService
