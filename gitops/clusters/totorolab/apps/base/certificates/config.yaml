@@ -1,44 +1,19 @@
 apiVersion: cert-manager.io/v1
-kind: Certificate
+kind: ClusterIssuer
 metadata:
-  name: homarr-cert
-  namespace: cert-manager
+  name: selfsigned
 spec:
-  dependsOn:
-    - name: cert-manager
-  secretName: homarr-cert
-  issuerRef:
-    name: letsencrypt-prod
-    kind: ClusterIssuer
-  dnsNames:
-    - homarr.totorolab.local
----
-apiVersion: cert-manager.io/v1
-kind: Certificate
-metadata:
-  name: nextcloud-cert
-  namespace: cert-manager
-spec:
-  dependsOn:
-    - name: cert-manager
-  secretName: nextcloud-cert
-  issuerRef:
-    name: letsencrypt-prod
-    kind: ClusterIssuer
-  dnsNames:
-    - nextcloud.totorolab.local
+  selfSigned: {}
 ---
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
   name: grafana-cert
-  namespace: cert-manager
+  namespace: monitoring
 spec:
-  dependsOn:
-    - name: cert-manager
   secretName: grafana-cert
   issuerRef:
-    name: letsencrypt-prod
+    name: selfsigned
     kind: ClusterIssuer
   dnsNames:
     - grafana.totorolab.local
@@ -46,32 +21,38 @@ spec:
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: traefik-cert
-  namespace: cert-manager
+  name: nextcloud-cert
+  namespace: nextcloud
 spec:
-  dependsOn:
-    - name: cert-manager
-  secretName: traefik-cert
+  secretName: nextcloud-cert
   issuerRef:
-    name: letsencrypt-prod
+    name: selfsigned
     kind: ClusterIssuer
   dnsNames:
-    - traefik.totorolab.local
+    - nextcloud.totorolab.local
 ---
 apiVersion: cert-manager.io/v1
-kind: ClusterIssuer
+kind: Certificate
 metadata:
-  name: letsencrypt-prod
-  namespace: cert-manager
+  name: traefik-cert
+  namespace: traefik
 spec:
-  dependsOn:
-    - name: cert-manager
-  acme:
-    email: you@example.com
-    server: https://acme-v02.api.letsencrypt.org/directory
-    privateKeySecretRef:
-      name: letsencrypt-prod-key
-    solvers:
-      - http01:
-          ingress:
-            class: traefik
+  secretName: traefik-cert
+  issuerRef:
+    name: selfsigned
+    kind: ClusterIssuer
+  dnsNames:
+    - totorolab.local
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: homarr-cert
+  namespace: homarr
+spec:
+  secretName: homarr-cert
+  issuerRef:
+    name: selfsigned
+    kind: ClusterIssuer
+  dnsNames:
+    - homarr.totorolab.local
