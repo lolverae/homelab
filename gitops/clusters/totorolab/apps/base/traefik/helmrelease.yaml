@@ -20,7 +20,6 @@ spec:
   values:
     deployment:
       replicas: 1
-    certResolvers: {}
     providers:
       kubernetesCRD:
         enabled: true
