@@ -6,5 +6,5 @@ resources:
   - homarr-helm-repository.yaml
   - metallb-helm-repository.yaml
   - nextcloud-helm-repository.yaml
-  - prometheus-helm-repository.yaml
+  # - prometheus-helm-repository.yaml
   - traefik-helm-repository.yaml
