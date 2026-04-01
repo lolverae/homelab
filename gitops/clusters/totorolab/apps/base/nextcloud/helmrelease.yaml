@@ -19,7 +19,7 @@ spec:
     crds: CreateReplace
   values:
     nextcloud:
-      host: nextcloud.totorolab.local
+      host: nextcloud.albertoops.com
     ingress:
       enabled: false
     persistence:

@@ -11,36 +11,18 @@ spec:
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
-  name: dashboard
-  namespace: traefik
-spec:
-  entryPoints:
-    - web
-  routes:
-    - match: Host(`totorolab.local`) && PathPrefix(`/traefik`)
-      kind: Rule
-      middlewares:
-        - name: strip-traefik-prefix
-      services:
-        - name: traefik
-          port: 443
-  tls:
-    secretName: traefik-cert
----
-apiVersion: traefik.io/v1alpha1
-kind: IngressRoute
-metadata:
   name: nextcloud
   namespace: nextcloud
 spec:
+  entryPoints:
+    - websecure
   routes:
-    - match: Host(`nextcloud.totorolab.local`)
+    - match: Host(`nextcloud.totorolab.local`) || Host(`nextcloud.albertoops.com`)
       kind: Rule
       services:
         - name: nextcloud
           port: 8080
-  tls:
-    secretName: nextcloud-cert
+  tls: {}
 ---
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
@@ -48,14 +30,15 @@ metadata:
   name: grafana
   namespace: monitoring
 spec:
+  entryPoints:
+    - websecure
   routes:
-    - match: Host(`grafana.totorolab.local`)
+    - match: Host(`grafana.totorolab.local`) || Host(`grafana.albertoops.com`)
       kind: Rule
       services:
         - name: grafana
           port: 80
-  tls:
-    secretName: grafana-cert
+  tls: {}
 ---
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
@@ -63,11 +46,12 @@ metadata:
   name: homarr
   namespace: homarr
 spec:
+  entryPoints:
+    - websecure
   routes:
-    - match: Host(`homarr.totorolab.local`)
+    - match: Host(`homarr.totorolab.local`) || Host(`homarr.albertoops.com`)
       kind: Rule
       services:
         - name: homarr
           port: 7575
-  tls:
-    secretName: homarr-cert
+  tls: {}
