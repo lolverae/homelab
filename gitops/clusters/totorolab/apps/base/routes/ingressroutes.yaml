@@ -22,7 +22,6 @@ spec:
       services:
         - name: nextcloud
           port: 8080
-  tls: {}
 ---
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
@@ -38,7 +37,6 @@ spec:
       services:
         - name: grafana
           port: 80
-  tls: {}
 ---
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
@@ -54,4 +52,3 @@ spec:
       services:
         - name: homarr
           port: 7575
-  tls: {}
