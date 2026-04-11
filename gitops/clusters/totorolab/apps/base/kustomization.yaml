@@ -6,7 +6,6 @@ resources:
   - grafana
   - homarr
   - metallb
-  - nextcloud
   # - prometheus
   - routes
   - traefik
