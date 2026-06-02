@@ -24,6 +24,8 @@ spec:
       repository: ghcr.io/homarr-labs/homarr
       pullPolicy: IfNotPresent
       tag: v1.63.0
+    podSecurityContext:
+      fsGroup: 1000
     env:
       TZ: America/CST
     imagePullSecrets:
