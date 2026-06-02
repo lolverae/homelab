@@ -21,6 +21,12 @@ spec:
     crds: CreateReplace
   values:
     installCRDs: true
+    securityContext:
+      runAsUser: 472
+      runAsGroup: 472
+      fsGroup: 472
+    initChownData:
+      enabled: false
     persistence:
       enabled: true
       accessModes:
