@@ -20,6 +20,17 @@ spec:
   upgrade:
     crds: CreateReplace
   values:
+    podSecurityContext:
+      runAsNonRoot: true
+      runAsUser: 1000
+      runAsGroup: 1000
+      fsGroup: 1000
+      seccompProfile:
+        type: RuntimeDefault
+    securityContext:
+      allowPrivilegeEscalation: false
+      capabilities:
+        drop: ["ALL"]
     image:
       repository: ghcr.io/homarr-labs/homarr
       pullPolicy: IfNotPresent

@@ -5,11 +5,7 @@ metadata:
   namespace: metallb
 spec:
   driftDetection:
-    mode: enabled
-    ignore:
-      - paths: [""]
-        target:
-          kind: CustomResourceDefinition
+    mode: warn
   chart:
     spec:
       chart: metallb
