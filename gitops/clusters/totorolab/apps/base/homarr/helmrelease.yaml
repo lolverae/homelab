@@ -13,7 +13,7 @@ spec:
         kind: HelmRepository
         name: homarr
         namespace: homarr
-      version: '*'
+      version: 8.19.0
   interval: 1h
   install:
     crds: Create
@@ -23,7 +23,7 @@ spec:
     image:
       repository: ghcr.io/homarr-labs/homarr
       pullPolicy: IfNotPresent
-      tag: v1.8.0
+      tag: v1.63.0
     env:
       TZ: America/CST
     imagePullSecrets:
