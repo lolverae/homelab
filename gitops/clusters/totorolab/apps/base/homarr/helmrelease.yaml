@@ -29,16 +29,19 @@ spec:
     imagePullSecrets:
       - name: regcred
     persistence:
-      homarrDatabase:
+      data:
         enabled: true
         accessMode: ReadWriteOnce
-        size: 512Mi
-        mountPath: /app/database
-      homarrImages:
+        size: 2Gi
+        mountPath: /appdata
+      nginx-conf:
         enabled: true
-        accessMode: ReadWriteOnce
-        size: 512Mi
-        mountPath: /app/public/icons
+        type: emptyDir
+        mountPath: /etc/nginx
+      nginx-tmp:
+        enabled: true
+        type: emptyDir
+        mountPath: /var/lib/nginx
     livenessProbe:
       httpGet:
         path: /
@@ -48,15 +51,10 @@ spec:
         path: /
         port: 7575
     service:
-      # -- Enable service
       enabled: true
-      # -- Service type
       type: ClusterIP
       ports:
         app:
-          # -- Service port
           port: 7575
-          # -- Service target port
           targetPort: http
-          # -- Service protocol
           protocol: TCP
