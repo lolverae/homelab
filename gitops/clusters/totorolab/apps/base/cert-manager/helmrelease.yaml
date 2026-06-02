@@ -4,6 +4,8 @@ metadata:
   name: cert-manager
   namespace: cert-manager
 spec:
+  driftDetection:
+    mode: enabled
   interval: 1h
   chart:
     spec:

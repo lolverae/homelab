@@ -4,6 +4,8 @@ metadata:
   name: metallb
   namespace: metallb
 spec:
+  driftDetection:
+    mode: enabled
   chart:
     spec:
       chart: metallb

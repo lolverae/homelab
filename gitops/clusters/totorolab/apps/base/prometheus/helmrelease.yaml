@@ -4,6 +4,8 @@ metadata:
   name: kube-prometheus-stack
   namespace: monitoring
 spec:
+  driftDetection:
+    mode: enabled
   interval: 1h
   chart:
     spec:

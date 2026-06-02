@@ -4,6 +4,8 @@ metadata:
   name: grafana
   namespace: monitoring
 spec:
+  driftDetection:
+    mode: enabled
   interval: 1h
   chart:
     spec:
