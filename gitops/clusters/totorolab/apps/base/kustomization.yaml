@@ -5,6 +5,7 @@ resources:
   - certificates
   - grafana
   - homarr
+  - immich
   - metallb
   # - prometheus
   - routes
