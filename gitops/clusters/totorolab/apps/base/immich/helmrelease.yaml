@@ -47,19 +47,13 @@ spec:
           accessMode: ReadWriteOnce
 
     postgresql:
-      enabled: true
+      enabled: false
       global:
         postgresql:
           auth:
             username: immich
             password: immich
             database: immich
-      primary:
-        persistence:
-          enabled: true
-          size: 8Gi
-          accessModes:
-            - ReadWriteOnce
 
     redis:
       enabled: true
