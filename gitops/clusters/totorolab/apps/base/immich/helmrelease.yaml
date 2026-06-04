@@ -32,9 +32,6 @@ spec:
         pullPolicy: IfNotPresent
       env:
         TZ: America/Chicago
-      service:
-        type: ClusterIP
-        port: 2283
 
     machine-learning:
       enabled: true
