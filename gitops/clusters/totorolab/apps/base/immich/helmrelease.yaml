@@ -34,17 +34,7 @@ spec:
         TZ: America/Chicago
 
     machine-learning:
-      enabled: true
-      image:
-        repository: ghcr.io/immich-app/immich-machine-learning
-        pullPolicy: IfNotPresent
-      env:
-        TZ: America/Chicago
-      persistence:
-        cache:
-          enabled: true
-          size: 10Gi
-          accessMode: ReadWriteOnce
+      enabled: false
 
     postgresql:
       enabled: false
@@ -56,13 +46,4 @@ spec:
             database: immich
 
     redis:
-      enabled: true
-      architecture: standalone
-      auth:
-        enabled: false
-      master:
-        persistence:
-          enabled: true
-          size: 1Gi
-          accessModes:
-            - ReadWriteOnce
+      enabled: false
