@@ -51,8 +51,10 @@ spec:
         postgresql:
           auth:
             username: immich
-            password: immich
             database: immich
+            existingSecret: immich-db-credentials
+            secretKeys:
+              userPasswordKey: password
 
     redis:
       enabled: false

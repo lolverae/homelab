@@ -3,3 +3,4 @@ kind: Kustomization
 resources:
   - helmrelease.yaml
   - postgres-helmrelease.yaml
+  - secret.yaml

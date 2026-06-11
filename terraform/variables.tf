@@ -109,7 +109,7 @@ variable "pm_api_token_secret" {
 variable "pm_tls_insecure" {
   type        = bool
   description = "Disable TLS verification while connecting to the Proxmox VE API server."
-  default = true
+  default = false
 }
 variable "pm_host" {
   type        = string
