@@ -23,7 +23,7 @@ spec:
     image:
       repository: ghcr.io/homarr-labs/homarr
       pullPolicy: IfNotPresent
-      tag: v1.63.0
+      tag: v1.64.0
     podSecurityContext:
       fsGroup: 1000
     env:
@@ -31,19 +31,13 @@ spec:
     imagePullSecrets:
       - name: regcred
     persistence:
-      data:
+      homarrDatabase:
         enabled: true
         accessMode: ReadWriteOnce
         size: 2Gi
         mountPath: /appdata
-      nginx-conf:
-        enabled: true
-        type: emptyDir
-        mountPath: /etc/nginx
-      nginx-tmp:
-        enabled: true
-        type: emptyDir
-        mountPath: /var/lib/nginx
+        name: homarr-database
+        storageClassName: local-path
     livenessProbe:
       httpGet:
         path: /
