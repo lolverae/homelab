@@ -4,8 +4,8 @@ resource "proxmox_vm_qemu" "talos_vm" {
   clone            = var.vm_talos_tmpl_name
   qemu_os          = "l26"
   name             = "${var.vm_name_prefix}-${format("%02d", count.index + 1)}"
-  agent            = 1
-  onboot           = var.vm_onboot
+  agent                = 0
+  start_at_node_boot   = var.vm_onboot
 
   cores            = var.vm_max_vcpus
   vcpus            = var.vm_vcpus
@@ -17,7 +17,7 @@ resource "proxmox_vm_qemu" "talos_vm" {
   boot             = "order=scsi0;net0;ide0"
   hotplug          = "disk,network"
   automatic_reboot = false
-  vm_state         = "stopped"
+  vm_state         = "running"
 
   desc = "Talos OS Kubernetes stateless node, NFS-backed media storage"
   tags = var.vm_tags
@@ -34,7 +34,7 @@ resource "proxmox_vm_qemu" "talos_vm" {
       scsi0 {
         disk {
           size     = "200G"
-          storage  = "local-lvm"
+          storage  = var.vm_os_disk_storage
           iothread = true
           discard   = true
           cache     = "none"

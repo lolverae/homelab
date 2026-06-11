@@ -15,9 +15,10 @@ module "main_node" {
   vm_os_disk_storage  = var.vm_os_disk_storage
   vm_net_name         = var.internal_net_name
   vm_net_subnet_cidr  = var.internal_net_subnet_cidr
-  vm_host_number      = 10
+  vm_host_number      = 10  # → 10.0.1.10, 10.0.1.11
   vm_user             = var.vm_user
   vm_tags             = var.node_tag
+  vm_onboot           = true
 }
 
 module "secondary_node" {
@@ -37,9 +38,10 @@ module "secondary_node" {
   vm_os_disk_storage  = var.vm_os_disk_storage
   vm_net_name         = var.internal_net_name
   vm_net_subnet_cidr  = var.internal_net_subnet_cidr
-  vm_host_number      = 10
+  vm_host_number      = 12  # → 10.0.1.12, 10.0.1.13
   vm_user             = var.vm_user
   vm_tags             = var.node_tag
+  vm_onboot           = true
 }
 
 # module "third_node" {
@@ -81,9 +83,10 @@ module "controller_one" {
   vm_os_disk_storage  = var.vm_os_disk_storage
   vm_net_name         = var.internal_net_name
   vm_net_subnet_cidr  = var.internal_net_subnet_cidr
-  vm_host_number      = 10
+  vm_host_number      = 20  # → 10.0.1.20
   vm_user             = var.vm_user
   vm_tags             = var.controller_tag
+  vm_onboot           = true
 }
 
 module "controller_two" {
@@ -103,9 +106,10 @@ module "controller_two" {
   vm_os_disk_storage  = var.vm_os_disk_storage
   vm_net_name         = var.internal_net_name
   vm_net_subnet_cidr  = var.internal_net_subnet_cidr
-  vm_host_number      = 10
+  vm_host_number      = 21  # → 10.0.1.21
   vm_user             = var.vm_user
   vm_tags             = var.controller_tag
+  vm_onboot           = true
 }
 
 # module "controller_three" {
