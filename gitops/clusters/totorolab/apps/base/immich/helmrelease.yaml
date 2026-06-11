@@ -32,6 +32,15 @@ spec:
         pullPolicy: IfNotPresent
       env:
         TZ: America/Chicago
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: proxmox-host
+                    operator: In
+                    values:
+                      - pve1
 
     machine-learning:
       enabled: false
